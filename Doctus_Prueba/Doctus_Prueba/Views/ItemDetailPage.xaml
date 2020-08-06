@@ -7,11 +7,14 @@
              x:Class="Doctus_Prueba.Views.ItemDetailPage"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>
+    <StackLayout Spacing="20" Padding="35">
+        <Label Text="02/02/2017" FontSize="Large" />
+        <Label Text="Tip de Venta" FontSize="Title" />
+        <Label Text="Conoce todos nuestros tips de venta y coviertete en el mejor vendedor. Aprende a retener clientes y hacer ventas cruzadas" FontSize="Small" />
+        <!--<Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
+        <Label Text="Conoce todos nuestros tips de venta y se el mejor!" FontSize="Medium" />
+        <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>-->
+        <Button Text="Editar" Clicked="OnItemSelected" HorizontalOptions="Center" Margin="10"/>
     </StackLayout>
     
 </ContentPage>

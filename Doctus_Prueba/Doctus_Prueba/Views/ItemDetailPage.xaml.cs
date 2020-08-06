@@ -35,5 +35,10 @@ namespace Doctus_Prueba.Views
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
         }
+
+        async void OnItemSelected(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+        }
     }
 }
