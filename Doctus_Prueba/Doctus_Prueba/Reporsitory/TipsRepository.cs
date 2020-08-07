@@ -10,18 +10,18 @@ namespace Doctus_Prueba.Reporsitory
     public class TipsRepository
     {
         private SQLiteConnection con;
-        private static TipsRepository tipsR;
+        private static TipsRepository tipsRepository;
         public string response;
-        public static TipsRepository TipsR { get { if (tipsR == null) throw new Exception("Error al instanciar"); return tipsR; } }
+        public static TipsRepository Tips_Repository { get { if (tipsRepository == null) throw new Exception("Error al instanciar"); return tipsRepository; } }
         
-        public static void Validar(string fileName)
+        public static void Iniciar(string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentNullException();
 
-            if (TipsR != null)
-                tipsR.con.Close();
-            tipsR = new TipsRepository(fileName);
+            if (tipsRepository != null)
+                tipsRepository.con.Close();
+            tipsRepository = new TipsRepository(fileName);
         }
 
         private TipsRepository(string path)

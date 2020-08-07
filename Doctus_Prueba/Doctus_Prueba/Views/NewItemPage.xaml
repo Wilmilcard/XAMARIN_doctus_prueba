@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Doctus_Prueba.Views.NewItemPage"
-             Title="New Item">
+             Title="Nuevo Tip">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
@@ -13,12 +13,14 @@
     
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <DatePicker  />
             <Label Text="Titulo" FontSize="Medium" />
-            <Entry Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small" />
+            <Entry x:Name="TxtTitulo"/>
+            <!--<Entry Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small" />-->
             <Label Text="Descripción" FontSize="Medium" />
-            <Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />
-            <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Save_Clicked"/>
+            <Editor x:Name="TxtDescipcion"/>
+            <!--<Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />-->
+            <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip"/>
+            <Label x:Name="StatusMessage" FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>
     

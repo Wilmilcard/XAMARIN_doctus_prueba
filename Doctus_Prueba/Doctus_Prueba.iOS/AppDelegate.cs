@@ -23,7 +23,8 @@ namespace Doctus_Prueba.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            string dbPath = FileAccess.GetLocalFilePath("doctus_prueba.db3");
+            LoadApplication(new App(dbPath));
 
             return base.FinishedLaunching(app, options);
         }

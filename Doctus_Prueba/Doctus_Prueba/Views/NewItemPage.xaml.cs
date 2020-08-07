@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Doctus_Prueba.Models;
+using Doctus_Prueba.Reporsitory;
 
 namespace Doctus_Prueba.Views
 {
@@ -32,6 +33,13 @@ namespace Doctus_Prueba.Views
         {
             MessagingCenter.Send(this, "AddItem", Item);
             await Navigation.PopModalAsync();
+        }
+
+        async void Insertar_Tip(object sender, EventArgs e)
+        {
+            this.StatusMessage.Text = string.Empty;
+            TipsRepository.Tips_Repository.AddTip(TxtTitulo.Text, TxtDescipcion.Text);
+            this.StatusMessage.Text = TipsRepository.Tips_Repository.response;
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)

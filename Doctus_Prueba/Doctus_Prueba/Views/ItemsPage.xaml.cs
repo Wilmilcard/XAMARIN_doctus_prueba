@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using Doctus_Prueba.Models;
 using Doctus_Prueba.Views;
 using Doctus_Prueba.ViewModels;
+using Doctus_Prueba.Reporsitory;
 
 namespace Doctus_Prueba.Views
 {
@@ -25,6 +26,14 @@ namespace Doctus_Prueba.Views
             InitializeComponent();
 
             BindingContext = viewModel = new ItemsViewModel();
+            this.CargarTips();
+
+        }
+
+        public void CargarTips()
+        {
+            var allTips = TipsRepository.Tips_Repository.GetAllTips();
+            tipsList.ItemsSource = allTips;
         }
 
         async void OnItemSelected(object sender, EventArgs args)
