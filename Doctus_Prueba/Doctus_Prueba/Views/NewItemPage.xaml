@@ -19,9 +19,9 @@
             </Grid.RowDefinitions>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Titulo" FontSize="Medium" />
-                <Entry x:Name="TxtTitulo"/>
+                <Entry x:Name="TxtTitulo" MaxLength="30"/>
                 <Label Text="Descripción" FontSize="Medium"/>
-                <Editor x:Name="TxtDescipcion" HeightRequest="200"/>
+                <Editor x:Name="TxtDescipcion" HeightRequest="200" MaxLength="150"/>
             </StackLayout>
             <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip" BackgroundColor="{StaticResource Verde}" TextColor="White" Grid.Row="1" Margin="15"/>
         </Grid>

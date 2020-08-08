@@ -42,7 +42,7 @@ namespace Doctus_Prueba.Views
                 else
                 {
                     TipsRepository.Tips_Repository.AddTip(TxtTitulo.Text, TxtDescipcion.Text);
-                    await DisplayAlert("Editado", $"Tip creado", "OK");
+                    await DisplayAlert("Creado", $"Tip creado", "OK");
                 }
             }
             catch (Exception ex)
