@@ -8,17 +8,23 @@
              Title="Nuevo Tip">
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="Atras" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Titulo" FontSize="Medium" />
-            <Entry x:Name="TxtTitulo"/>
-            <Label Text="Descripción" FontSize="Medium" />
-            <Editor x:Name="TxtDescipcion"/>
-            <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip" BackgroundColor="{StaticResource Verde}" TextColor="White"/>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Titulo" FontSize="Medium" />
+                <Entry x:Name="TxtTitulo"/>
+                <Label Text="Descripción" FontSize="Medium"/>
+                <Editor x:Name="TxtDescipcion" HeightRequest="200"/>
+            </StackLayout>
+            <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip" BackgroundColor="{StaticResource Verde}" TextColor="White" Grid.Row="1" Margin="15"/>
+        </Grid>
     </ContentPage.Content>
     
 </ContentPage>

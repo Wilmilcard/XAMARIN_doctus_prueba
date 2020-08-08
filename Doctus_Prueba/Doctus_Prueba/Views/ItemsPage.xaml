@@ -15,8 +15,8 @@
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
                             <StackLayout Padding="20" WidthRequest="150">
-                                <Label Text="{Binding Text}" d:Text="{Binding FechaCreacion}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                <Label Text="{Binding Titulo}" d:Text="Item descripton" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                <Label Text="{Binding FechaCreacion, StringFormat='{0:dd/MM/yyyy}'}"  LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                <Label Text="{Binding Titulo}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>

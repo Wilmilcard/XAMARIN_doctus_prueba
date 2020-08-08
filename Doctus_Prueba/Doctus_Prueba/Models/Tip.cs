@@ -11,10 +11,10 @@ namespace Doctus_Prueba.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         
-        [MaxLength(20)]
+        [MaxLength(30)]
         public string Titulo { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(150)]
         public string Descripcion { get; set; }
         
         public DateTime FechaCreacion { get; set; }
