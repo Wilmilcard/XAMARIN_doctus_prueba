@@ -6,13 +6,11 @@ namespace Doctus_Prueba.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public Tip Item { get; set; }
+        public ItemDetailViewModel(Tip item = null)
         {
-            Title = item?.Text;
+            Title = item?.Titulo;
             Item = item;
         }
-
-
     }
 }

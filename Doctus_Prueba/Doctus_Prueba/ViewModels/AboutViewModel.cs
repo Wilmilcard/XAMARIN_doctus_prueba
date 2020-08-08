@@ -9,7 +9,7 @@ namespace Doctus_Prueba.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = "Información";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
         }
 

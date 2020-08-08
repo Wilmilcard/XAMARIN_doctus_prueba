@@ -7,40 +7,33 @@ using Xamarin.Forms;
 
 using Doctus_Prueba.Models;
 using Doctus_Prueba.Views;
+using Doctus_Prueba.Reporsitory;
+using System.Collections.Generic;
 
 namespace Doctus_Prueba.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public ObservableCollection<Tip> TipsList { get; set; }
+        public Command LoadTipsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Tips";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
+            this.TipsList = new ObservableCollection<Tip>();
+            this.TipsList = TipsRepository.Tips_Repository.GetAllTips();
+
+            LoadTipsCommand = new Command(async () => await ExecuteLoadTipsCommand());
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadTipsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
+                this.TipsList = TipsRepository.Tips_Repository.GetAllTips();
             }
             catch (Exception ex)
             {

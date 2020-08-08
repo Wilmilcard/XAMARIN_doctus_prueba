@@ -12,19 +12,8 @@
         <!--<ToolbarItem Text="Add" Clicked="AddItem_Clicked" />-->
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-            <CollectionView x:Name="ItemsCollectionView"
-                ItemsSource="{Binding Items}">
-                <d:CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Tip 1</x:String>
-                        <x:String>Tip 2</x:String>
-                        <x:String>Tip 3</x:String>
-                        <x:String>Tip 4</x:String>
-                        <x:String>Tip 5</x:String>
-                        <x:String>Tip 6</x:String>
-                    </x:Array>
-                </d:CollectionView.ItemsSource>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadTipsCommand}">
+            <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding TipsList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
@@ -36,52 +25,14 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Button Text="Ver" Clicked="OnItemSelected" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Button Text="Borrar" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button Text="Ver" Clicked="TipSelected" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button Text="Borrar" Clicked="DeleteTip" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-
-        <ListView x:Name="tipsList">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Label Text="{Binding Titulo}"/>
-                            <Label Text="{Binding FechaCreacion}"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <!--<DataTemplate>
-            <StackLayout Orientation="Horizontal">
-                <StackLayout Padding="20">
-                    <Label Text="{Binding Text}" 
-                                d:Text="{Binding .}"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                    <Label Text="{Binding Description}" 
-                                d:Text="Item descripton"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Ver" Clicked="OnItemSelected" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Button Text="Borrar" HorizontalOptions="Center" VerticalOptions="Center"/>
-                </StackLayout>
-            </StackLayout>
-        </DataTemplate>-->
-
         <Button Text="Crear" Margin="10" Clicked="AddItem_Clicked" HorizontalOptions="Center"/>
     </StackLayout>
 </ContentPage>

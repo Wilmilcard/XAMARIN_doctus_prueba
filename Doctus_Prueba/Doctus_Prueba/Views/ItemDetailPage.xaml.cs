@@ -26,10 +26,10 @@ namespace Doctus_Prueba.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Tip
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                Titulo = "Prueba",
+                Descripcion = "Prueba de cargue."
             };
 
             viewModel = new ItemDetailViewModel(item);
@@ -38,7 +38,7 @@ namespace Doctus_Prueba.Views
 
         async void OnItemSelected(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage(viewModel.Item)));
         }
     }
 }

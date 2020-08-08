@@ -15,8 +15,10 @@ namespace Doctus_Prueba.Views
     public partial class NewItemPage : ContentPage
     {
         public Item Item { get; set; }
+        public Tip Tip { get; set; }
+        public bool isEdith { get; set; }
 
-        public NewItemPage()
+        public NewItemPage(Tip tip_editar = null)
         {
             InitializeComponent();
 
@@ -25,6 +27,11 @@ namespace Doctus_Prueba.Views
                 Text = "Item name",
                 Description = "This is an item description."
             };
+
+            this.Tip = tip_editar;
+            this.TxtTitulo.Text = this.Tip == null ? "" : this.Tip.Titulo;
+            this.TxtDescipcion.Text = this.Tip == null ? "" : this.Tip.Descripcion;
+            this.isEdith = this.Tip == null ? false : true;
 
             BindingContext = this;
         }
@@ -38,8 +45,19 @@ namespace Doctus_Prueba.Views
         async void Insertar_Tip(object sender, EventArgs e)
         {
             this.StatusMessage.Text = string.Empty;
-            TipsRepository.Tips_Repository.AddTip(TxtTitulo.Text, TxtDescipcion.Text);
+
+            if (this.isEdith)
+            {
+                this.Tip = new Tip { Id = this.Tip.Id, Titulo = TxtTitulo.Text, Descripcion = TxtDescipcion.Text, FechaCreacion = this.Tip.FechaCreacion };
+                TipsRepository.Tips_Repository.UpdateTip(this.Tip);
+            }
+            else
+            {
+                TipsRepository.Tips_Repository.AddTip(TxtTitulo.Text, TxtDescipcion.Text);
+            }
+
             this.StatusMessage.Text = TipsRepository.Tips_Repository.response;
+            await Navigation.PopModalAsync();
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)

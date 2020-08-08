@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Doctus_Prueba.Models;
@@ -30,17 +31,18 @@ namespace Doctus_Prueba.Reporsitory
             this.con.CreateTable<Tip>();
         }
 
-        public IEnumerable<Tip> GetAllTips()
+        public ObservableCollection<Tip> GetAllTips()
         {
             try
             {
-                return this.con.Table<Tip>();
+                var myObservableCollection = new ObservableCollection<Tip>(this.con.Table<Tip>());
+                return myObservableCollection;
             }
             catch (Exception ex)
             {
                 this.response = ex.Message;
             }
-            return Enumerable.Empty<Tip>();
+            return new ObservableCollection<Tip>();
         }
 
         public int AddTip(string _titulo, string _desc)
@@ -58,6 +60,31 @@ namespace Doctus_Prueba.Reporsitory
             return rpta;
         }
 
+        public int UpdateTip(Tip _tip)
+        {
+            int rpta = 0;
+            try
+            {
+                rpta = con.Update(_tip);
+                this.response = string.Format($"Filas Actualizadas --> {rpta}");
+            }
+            catch(Exception ex)
+            {
+                this.response = ex.Message;
+            }
+            return rpta;
+        }
         
+        public void DeleteTip(Tip _tip)
+        {
+            try
+            {
+                var rpta = con.Delete(_tip);
+            }
+            catch (Exception ex)
+            {
+                this.response = ex.Message;
+            }
+        }
     }
 }

@@ -15,10 +15,8 @@
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Titulo" FontSize="Medium" />
             <Entry x:Name="TxtTitulo"/>
-            <!--<Entry Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small" />-->
             <Label Text="Descripción" FontSize="Medium" />
             <Editor x:Name="TxtDescipcion"/>
-            <!--<Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />-->
             <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip"/>
             <Label x:Name="StatusMessage" FontSize="Medium"/>
         </StackLayout>

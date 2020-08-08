@@ -8,9 +8,9 @@
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="35">
-        <Label Text="02/02/2017" FontSize="Large" />
-        <Label Text="Tip de Venta" FontSize="Title" />
-        <Label Text="Conoce todos nuestros tips de venta y coviertete en el mejor vendedor. Aprende a retener clientes y hacer ventas cruzadas" FontSize="Small" />
+        <Label Text="{Binding Item.FechaCreacion}" FontSize="Large" />
+        <Label Text="{Binding Item.Titulo}" FontSize="Medium" />
+        <Label Text="{Binding Item.Descripcion}" FontSize="Small" />
         <!--<Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
         <Label Text="Conoce todos nuestros tips de venta y se el mejor!" FontSize="Medium" />
         <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>-->

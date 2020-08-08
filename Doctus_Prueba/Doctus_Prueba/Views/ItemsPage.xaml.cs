@@ -26,21 +26,7 @@ namespace Doctus_Prueba.Views
             InitializeComponent();
 
             BindingContext = viewModel = new ItemsViewModel();
-            this.CargarTips();
 
-        }
-
-        public void CargarTips()
-        {
-            var allTips = TipsRepository.Tips_Repository.GetAllTips();
-            tipsList.ItemsSource = allTips;
-        }
-
-        async void OnItemSelected(object sender, EventArgs args)
-        {
-            var layout = (BindableObject)sender;
-            var item = (Item)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -52,8 +38,22 @@ namespace Doctus_Prueba.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.IsBusy = true;
+            //if (viewModel.Items.Count == 0)
+            //    viewModel.IsBusy = true;
+        }
+
+        async void TipSelected(object sender, EventArgs e)
+        {
+            var layout = (BindableObject)sender;
+            var tip = (Tip)layout.BindingContext;
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(tip)));
+        }
+
+        private void DeleteTip(object sender, EventArgs e)
+        {
+            var layout = (BindableObject)sender;
+            var tip = (Tip)layout.BindingContext;
+            TipsRepository.Tips_Repository.DeleteTip(tip);
         }
     }
 }
