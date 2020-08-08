@@ -1,7 +1,8 @@
 # Doctus App
-App para prueba de ingreso de Doctus
+App Xamarin para prueba de ingreso de Doctus
 
 ## Tecnologias usadas
+- Xamarin Forms
 - Visual Studio 2019
 - C#
 - SQL Lite
