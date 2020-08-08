@@ -14,19 +14,12 @@ namespace Doctus_Prueba.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
         public Tip Tip { get; set; }
         public bool isEdith { get; set; }
 
         public NewItemPage(Tip tip_editar = null)
         {
             InitializeComponent();
-
-            Item = new Item
-            {
-                Text = "Item name",
-                Description = "This is an item description."
-            };
 
             this.Tip = tip_editar;
             this.TxtTitulo.Text = this.Tip == null ? "" : this.Tip.Titulo;
@@ -36,27 +29,27 @@ namespace Doctus_Prueba.Views
             BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
-        {
-            MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
-        }
-
         async void Insertar_Tip(object sender, EventArgs e)
         {
-            this.StatusMessage.Text = string.Empty;
-
-            if (this.isEdith)
+            try
             {
-                this.Tip = new Tip { Id = this.Tip.Id, Titulo = TxtTitulo.Text, Descripcion = TxtDescipcion.Text, FechaCreacion = this.Tip.FechaCreacion };
-                TipsRepository.Tips_Repository.UpdateTip(this.Tip);
+                if (this.isEdith)
+                {
+                    this.Tip = new Tip { Id = this.Tip.Id, Titulo = TxtTitulo.Text, Descripcion = TxtDescipcion.Text, FechaCreacion = this.Tip.FechaCreacion };
+                    TipsRepository.Tips_Repository.UpdateTip(this.Tip);
+                    await DisplayAlert("Editado", $"El Tip {this.Tip.Id} actualizado", "OK");
+                }
+                else
+                {
+                    TipsRepository.Tips_Repository.AddTip(TxtTitulo.Text, TxtDescipcion.Text);
+                    await DisplayAlert("Editado", $"Tip creado", "OK");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TipsRepository.Tips_Repository.AddTip(TxtTitulo.Text, TxtDescipcion.Text);
+                await DisplayAlert("Error", ex.Message, "OK");
             }
 
-            this.StatusMessage.Text = TipsRepository.Tips_Repository.response;
             await Navigation.PopModalAsync();
         }
 

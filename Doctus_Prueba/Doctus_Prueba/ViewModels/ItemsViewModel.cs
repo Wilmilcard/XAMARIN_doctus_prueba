@@ -14,7 +14,9 @@ namespace Doctus_Prueba.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Tip> TipsList { get; set; }
+        private ObservableCollection<Tip> tipList;
+ 
+        public ObservableCollection<Tip> TipsList { get { return tipList; } set { tipList = value; OnPropertyChanged("TipsList"); } }
         public Command LoadTipsCommand { get; set; }
 
         public ItemsViewModel()
@@ -24,7 +26,7 @@ namespace Doctus_Prueba.ViewModels
             this.TipsList = new ObservableCollection<Tip>();
             this.TipsList = TipsRepository.Tips_Repository.GetAllTips();
 
-            LoadTipsCommand = new Command(async () => await ExecuteLoadTipsCommand());
+            this.LoadTipsCommand = new Command(async () => await ExecuteLoadTipsCommand());
         }
 
         async Task ExecuteLoadTipsCommand()
@@ -33,6 +35,7 @@ namespace Doctus_Prueba.ViewModels
 
             try
             {
+                this.TipsList.Clear();
                 this.TipsList = TipsRepository.Tips_Repository.GetAllTips();
             }
             catch (Exception ex)
@@ -43,6 +46,11 @@ namespace Doctus_Prueba.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        public async void Cargar()
+        {
+            await this.ExecuteLoadTipsCommand();
         }
     }
 }

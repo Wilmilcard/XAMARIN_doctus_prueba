@@ -11,10 +11,7 @@
         <Label Text="{Binding Item.FechaCreacion}" FontSize="Large" />
         <Label Text="{Binding Item.Titulo}" FontSize="Medium" />
         <Label Text="{Binding Item.Descripcion}" FontSize="Small" />
-        <!--<Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
-        <Label Text="Conoce todos nuestros tips de venta y se el mejor!" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>-->
-        <Button Text="Editar" Clicked="OnItemSelected" HorizontalOptions="Center" Margin="10" BackgroundColor="{StaticResource NavigationPrimary}" TextColor="White"/>
+        <Button Text="Editar" Clicked="SelectedTip" HorizontalOptions="Center" Margin="10" BackgroundColor="{StaticResource NavigationPrimary}" TextColor="White"/>
     </StackLayout>
     
 </ContentPage>

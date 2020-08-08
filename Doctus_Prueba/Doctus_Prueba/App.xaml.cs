@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Doctus_Prueba.Services;
 using Doctus_Prueba.Views;
 using Doctus_Prueba.Reporsitory;
 
@@ -14,7 +13,6 @@ namespace Doctus_Prueba
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             TipsRepository.Iniciar(filename);
             MainPage = new MainPage();
         }

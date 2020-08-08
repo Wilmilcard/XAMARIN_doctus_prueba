@@ -22,7 +22,7 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Button Text="Ver" Clicked="TipSelected" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource NavigationPrimary}" TextColor="White"/>
+                                <Button Text="Ver" Clicked="SelectedTip" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource NavigationPrimary}" TextColor="White"/>
                                 <Button Text="Borrar" Clicked="DeleteTip" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource Rojo}" TextColor="White"/>
                             </StackLayout>
                         </StackLayout>
@@ -30,6 +30,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-        <Button Text="Crear" Margin="10" Clicked="AddItem_Clicked" HorizontalOptions="Center" BackgroundColor="{StaticResource Verde}" TextColor="White"/>
+        <Button Text="Crear" Margin="10" Clicked="AddTip" HorizontalOptions="Center" BackgroundColor="{StaticResource Verde}" TextColor="White"/>
     </StackLayout>
 </ContentPage>

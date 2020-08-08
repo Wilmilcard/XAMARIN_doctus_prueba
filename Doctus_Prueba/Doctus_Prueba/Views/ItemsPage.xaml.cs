@@ -24,12 +24,10 @@ namespace Doctus_Prueba.Views
         public ItemsPage()
         {
             InitializeComponent();
-
             BindingContext = viewModel = new ItemsViewModel();
-
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        async void AddTip(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
@@ -37,23 +35,30 @@ namespace Doctus_Prueba.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            //if (viewModel.Items.Count == 0)
-            //    viewModel.IsBusy = true;
         }
 
-        async void TipSelected(object sender, EventArgs e)
+        async void SelectedTip(object sender, EventArgs e)
         {
             var layout = (BindableObject)sender;
             var tip = (Tip)layout.BindingContext;
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(tip)));
         }
 
-        private void DeleteTip(object sender, EventArgs e)
+        private async void DeleteTip(object sender, EventArgs e)
         {
             var layout = (BindableObject)sender;
             var tip = (Tip)layout.BindingContext;
-            TipsRepository.Tips_Repository.DeleteTip(tip);
+            try
+            {
+                TipsRepository.Tips_Repository.DeleteTip(tip);
+                await DisplayAlert("Eliminado", $"El tip {tip.Titulo} eliminado", "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+            }
+            this.viewModel.Cargar();
         }
+
     }
 }

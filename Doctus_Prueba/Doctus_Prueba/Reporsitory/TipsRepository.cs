@@ -35,8 +35,7 @@ namespace Doctus_Prueba.Reporsitory
         {
             try
             {
-                var myObservableCollection = new ObservableCollection<Tip>(this.con.Table<Tip>());
-                return myObservableCollection;
+                return new ObservableCollection<Tip>(this.con.Table<Tip>()); ;
             }
             catch (Exception ex)
             {

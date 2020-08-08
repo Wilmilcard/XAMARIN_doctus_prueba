@@ -36,7 +36,7 @@ namespace Doctus_Prueba.Views
             BindingContext = viewModel;
         }
 
-        async void OnItemSelected(object sender, EventArgs args)
+        async void SelectedTip(object sender, EventArgs args)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage(viewModel.Item)));
         }

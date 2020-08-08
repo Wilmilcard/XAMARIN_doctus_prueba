@@ -7,10 +7,10 @@ namespace Doctus_Prueba.ViewModels
     public class ItemDetailViewModel : BaseViewModel
     {
         public Tip Item { get; set; }
-        public ItemDetailViewModel(Tip item = null)
+        public ItemDetailViewModel(Tip tip = null)
         {
-            Title = item?.Titulo;
-            Item = item;
+            Title = tip?.Titulo;
+            Item = tip;
         }
     }
 }
