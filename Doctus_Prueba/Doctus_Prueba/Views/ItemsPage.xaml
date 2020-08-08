@@ -8,16 +8,13 @@
              Title="{Binding Title}"
              x:Name="TipsItemsPage">
 
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Add" Clicked="AddItem_Clicked" />-->
-    </ContentPage.ToolbarItems>
     <StackLayout>
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadTipsCommand}">
             <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding TipsList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
-                            <StackLayout Padding="20">
+                            <StackLayout Padding="20" WidthRequest="150">
                                 <Label Text="{Binding Text}" d:Text="{Binding FechaCreacion}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
                                 <Label Text="{Binding Titulo}" d:Text="Item descripton" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
                                 <StackLayout.GestureRecognizers>
@@ -25,14 +22,14 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Button Text="Ver" Clicked="TipSelected" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Button Text="Borrar" Clicked="DeleteTip" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button Text="Ver" Clicked="TipSelected" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource NavigationPrimary}" TextColor="White"/>
+                                <Button Text="Borrar" Clicked="DeleteTip" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource Rojo}" TextColor="White"/>
                             </StackLayout>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-        <Button Text="Crear" Margin="10" Clicked="AddItem_Clicked" HorizontalOptions="Center"/>
+        <Button Text="Crear" Margin="10" Clicked="AddItem_Clicked" HorizontalOptions="Center" BackgroundColor="{StaticResource Verde}" TextColor="White"/>
     </StackLayout>
 </ContentPage>

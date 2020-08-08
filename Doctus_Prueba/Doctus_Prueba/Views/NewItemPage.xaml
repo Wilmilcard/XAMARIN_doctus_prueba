@@ -17,7 +17,7 @@
             <Entry x:Name="TxtTitulo"/>
             <Label Text="Descripción" FontSize="Medium" />
             <Editor x:Name="TxtDescipcion"/>
-            <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip"/>
+            <Button Text="Guardar"  HorizontalOptions="Center" Clicked="Insertar_Tip" BackgroundColor="{StaticResource Verde}" TextColor="White"/>
             <Label x:Name="StatusMessage" FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>

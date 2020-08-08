@@ -10,6 +10,8 @@
         <ResourceDictionary>
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="Rojo">#FF5733</Color>
+            <Color x:Key="Verde">#9ACD32</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
